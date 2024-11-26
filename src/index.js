@@ -60,9 +60,12 @@ function App (){
 
 // Header Component
 function Header (){
+
+
+  const style = {}
   return (
-    <div className="header">
-      <h1>Fast React Pizza Co.</h1>
+    <div className="header footer ">
+      <h1 style={style}>Fast React Pizza Co.</h1>
     </div>
   )
 }
@@ -70,13 +73,41 @@ function Header (){
 // Menu Component
 function Menu (){
     return (
-      <div className="menu">
+      <main className="menu">
         <h2>Our Menu</h2>
-        <Pizza />
-        <Pizza />
-        <Pizza />
-      </div>
+
+        <Pizza
+          name="pizzas/spinaci.jpg"
+          ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+          photoName="pizzas/spinaci.jpg"
+          price={10}
+        />
+
+        <Pizza
+          name="Pizza Funghi"
+          ingredients="Mushroom, mozarella"
+          photoName="pizzas/funghi.jpg"
+          price={10}
+        />
+      </main>
     );
+}
+
+
+function Pizza(props) {
+  console.log(props)
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+
+      <div>
+        <h2>{props.name}</h2>
+
+        <p>{props.ingredients}</p>
+        <span>{props.price + 3}</span>
+      </div>
+    </div>
+  );
 }
 
 // Footer Component
@@ -87,7 +118,7 @@ function Footer  (){
     const closeHour = 22;
 
     const isOpen = hour >= openHour && hour <= closeHour;
-    console.log(isOpen)
+    
 
     // if(hour >= openHour && hour <= closeHour){
     //   alert("We're Currently Open!!!")
@@ -111,15 +142,7 @@ function Footer  (){
 
 }
 // We write new component using function
-function Pizza(){
-   return (
-     <div>
-        <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-       <h2>Pizza Spinaci</h2>
-       <p>"Tomato, mozarella, spinach, and ricotta cheese"</p>
-     </div>
-   );
-}
+
 
 
 // React v18
